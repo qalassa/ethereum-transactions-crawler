@@ -8,11 +8,13 @@ pub struct SearchForm {
     pub address: String,
     pub start_block: String,
     pub end_block: String,
+    pub date: String, // Add this line
 }
 
-pub async fn get_address_info(address: &str, start_block: &str, end_block: &str) -> Result<String, Box<dyn std::error::Error>> {
+
+pub async fn get_address_info(address: &str, start_block: &str, end_block: &str, date: &str) -> Result<String, Box<dyn std::error::Error>> {
     let client = Client::new();
-    let body = SearchForm { address: address.to_string(), start_block: start_block.to_string(), end_block: end_block.to_string() };
+    let body = SearchForm { address: address.to_string(), start_block: start_block.to_string(), end_block: end_block.to_string(), date: date.to_string() }; // Update this line
     let resp = client
         .post(SERVER_URL)
         .json(&body)
