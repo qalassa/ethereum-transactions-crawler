@@ -1,6 +1,7 @@
 # ethereum-transactions-crawler
 
-Pre-requisites: Rust and Node.js
+Pre-requisites: Rust and Node.js.
+
 Also, install 'http-server' globally via NPM by running:
 ```
 npm install --global http-server
