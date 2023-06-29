@@ -22,15 +22,17 @@
             display: flex;
             flex-direction: column;
         }
+        .input-group {
+            margin-bottom: 1em;
+        }
         label {
             font-weight: bold;
             margin-bottom: .5em;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="number"], input[type="date"] {
             padding: .5em;
             border-radius: 4px;
             border: 1px solid #ccc;
-            margin-bottom: 1em;
         }
         input[type="submit"] {
             cursor: pointer;
@@ -51,50 +53,62 @@
         }
     </style>
     <script>
-        window.onload = function() {
-            var form = document.querySelector("form");
-            var outputDiv = document.querySelector("#output");
-            form.addEventListener("submit", function(event) {
-                event.preventDefault();
-                var address = document.querySelector("#address").value;
-                var startBlock = document.querySelector("#startBlock").value;
-                var endBlock = document.querySelector("#endBlock").value;
-
-                fetch("http://localhost:8080/address", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        address: address,
-                        start_block: startBlock,
-                        end_block: endBlock,
-                    }),
-                })
-                .then(response => response.json())
-                .then(data => {
-                    outputDiv.textContent = JSON.stringify(data, null, 2);
-                })
-                .catch(error => console.error(error));
-            });
-        };
-    </script>
+    window.onload = function() {
+        var form = document.querySelector("form");
+        var outputDiv = document.querySelector("#output");
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            var address = document.querySelector("#address").value;
+            var startBlock = document.querySelector("#startBlock").value;
+            var endBlock = document.querySelector("#endBlock").value;
+            let date = document.querySelector("#date").value;
+            let utcDate = `${date}T00:00:00Z`; // format the date to YYYY-MM-DDT00:00:00Z
+            fetch("http://localhost:8080/address", {
+                method: "POST",
+                headers: {
+                     "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                     address: address,
+                     start_block: startBlock,
+                     end_block: endBlock,
+                     date: utcDate, // Use the formatted date
+            }),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                outputDiv.textContent = `ETH Balance: ${data[0]}\nToken Transfers: ${JSON.stringify(data[1], null, 2)}\nETH Transfers: ${JSON.stringify(data[2], null, 2)}`;
+            })
+            .catch(error => console.error(error));
+        });
+    };
+</script>
 </head>
 <body>
 <div class="container">
     <h1>Ethereum Address Info</h1>
     <form>
-        <label for="address">Ethereum Address:</label>
-        <input type="text" id="address" name="address">
-        <label for="startBlock">Starting Block:</label>
-        <input type="number" id="startBlock" name="startBlock">
-        <label for="endBlock">End Block:</label>
-        <input type="number" id="endBlock" name="endBlock">
+        <div class="input-group">
+            <label for="address">Ethereum Address:</label>
+            <input type="text" id="address" name="address">
+        </div>
+        <div class="input-group">
+            <label for="startBlock">Starting Block:</label>
+            <input type="number" id="startBlock" name="startBlock">
+        </div>
+        <div class="input-group">
+            <label for="endBlock">End Block:</label>
+            <input type="number" id="endBlock" name="endBlock">
+        </div>
+        <div class="input-group">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date">
+        </div>
         <input type="submit" value="Submit">
     </form>
-
     <!-- This div is where the server response will be displayed -->
-    <pre id="output"></pre>
+    <div id="output"></div>
 </div>
 </body>
 </html>
