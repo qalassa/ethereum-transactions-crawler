@@ -12,3 +12,7 @@ serde_json = "1.0"
 reqwest = { version = "*", features = ["json"] }
 env = "0.0.0"
 regex = "1.8.4"
+chrono = "0.4.26"
+env_logger = "0.10.0"
+common = {path = "../common"}
+log = "0.4.19"
