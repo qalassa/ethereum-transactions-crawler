@@ -23,7 +23,7 @@ pub async fn fetch_account_data(
         ("tag", "latest"),
         ("startblock", start_block),
         ("endblock", end_block),
-        ("apikey", "A5FYI2UF4KAZUE929VGP7QIVNWAIC88XVC"), // this the actual API key
+        ("apikey", "A5FYI2UF4KAZUE929VGP7QIVNWAIC88XVC"), // this is the actual API key
     ];
 
     let resp = client
@@ -44,7 +44,7 @@ pub async fn fetch_account_data(
         ("startblock", start_block),
         ("endblock", end_block),
         ("sort", "asc"),
-        ("apikey", "A5FYI2UF4KAZUE929VGP7QIVNWAIC88XVC"), //  this the actual API key
+        ("apikey", "A5FYI2UF4KAZUE929VGP7QIVNWAIC88XVC"), //  this is the actual API key
     ];
 
     let resp = client
