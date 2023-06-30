@@ -34,7 +34,7 @@ pub async fn get_account_data(
         }
     };
 
-    let account_data = fetch_account_data(&client, &address, &start_block, &end_block).await;
+    let account_data = fetch_account_data(&client, &address, &start_block, &end_block, &date).await;
 
     match account_data {
         Ok((eth_balance, token_transfers, eth_transfers)) => {
