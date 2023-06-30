@@ -3,7 +3,8 @@
 **Note: a little edit has been added, I forgot to update some files when I uploaded them**
 
 **The output should look like this:**
-![Screenshot_20230630_153954](https://github.com/qalassa/ethereum-transactions-crawler/assets/109701506/099cb58b-afb4-4eb6-90d0-1ad6b8f7936a)
+
+![Screenshot_20230630_153954](https://github.com/qalassa/ethereum-transactions-crawler/assets/109701506/ac952a84-516a-45bd-be0e-a370b436cd0b)
 
 Pre-requisites: Rust and Node.js.
 
