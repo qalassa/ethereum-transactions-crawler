@@ -1,5 +1,10 @@
 # ethereum-transactions-crawler
 
+**Note: a little edit has been added, I forgot to update some files when I uploaded them**
+
+**The output should look like this:**
+![Screenshot_20230630_153954](https://github.com/qalassa/ethereum-transactions-crawler/assets/109701506/099cb58b-afb4-4eb6-90d0-1ad6b8f7936a)
+
 Pre-requisites: Rust and Node.js.
 
 Also, install 'http-server' globally via NPM by running:
