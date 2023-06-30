@@ -62,7 +62,6 @@
             var startBlock = document.querySelector("#startBlock").value;
             var endBlock = document.querySelector("#endBlock").value;
             let date = document.querySelector("#date").value;
-            let utcDate = `${date}T00:00:00Z`; // format the date to YYYY-MM-DDT00:00:00Z
             fetch("http://localhost:8080/address", {
                 method: "POST",
                 headers: {
@@ -72,7 +71,7 @@
                      address: address,
                      start_block: startBlock,
                      end_block: endBlock,
-                     date: utcDate, // Use the formatted date
+                     date: date, // Use the formatted date
             }),
         })
             .then(response => response.json())
